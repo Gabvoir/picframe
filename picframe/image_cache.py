@@ -499,7 +499,11 @@ class ImageCache:
 
         #IPTC
         e['tags'] = exifs.get_exif('IPTC Keywords')
-        e['title'] = exifs.get_exif('IPTC Object Name')
+        val = exifs.get_exif('EXIF XPTitle')
+        if val != None:
+            e['title'] = val
+        else:
+            e['title'] = exifs.get_exif('IPTC Object Name')
         e['caption'] = exifs.get_exif('IPTC Caption/Abstract')
 
 
